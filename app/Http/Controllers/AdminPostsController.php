@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\PostsCreateRequest;
 use App\Post;
 use App\Photo;
+use App\Category;
 
 class AdminPostsController extends Controller
 {
@@ -37,7 +38,9 @@ class AdminPostsController extends Controller
     {
         //
         
-        return view('admin.posts.create');
+        $categories = Category::all();
+        
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**

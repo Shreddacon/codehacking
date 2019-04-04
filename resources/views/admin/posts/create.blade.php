@@ -19,8 +19,11 @@
     		
     			<option value="0">Choose a Category</option>
     			
-    			<option value="1">PHP</option>
-    			<option value="2">Javascript</option>
+    			@foreach($categories as $category)
+
+    				<option value="{{$category->id}}">{{$category->name}}</option>
+    		
+    			@endforeach
     		
     		</select>
     	</div>
