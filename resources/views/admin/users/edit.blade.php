@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if(Session::has('deleted_user')
+
+	<p class="bg-danger">{{session('deleted_user')}}</p>
+
+@endif
+
+
 <h1>Edit User</h1>
 
 <div class="row">
@@ -16,6 +23,7 @@
     
     	<form action="../../users/{{$user->id}}" method="post" enctype="multipart/form-data">
     	
+    		{{ csrf_field() }}
     		{{ method_field('PUT') }}
     	
         	<div class="form-group">
@@ -63,12 +71,22 @@
         	
         	
         	<div class="form-group">
-        		<input type="submit" value="Update User" class="btn btn-primary">
-        		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+        		<input type="submit" value="Update User" class="btn btn-primary col-sm-2">
         	</div>
         	
         </form>
-    
+        	
+        <form action="../../users/{{$user->id}}" method="post" enctype="multipart/form-data">
+        	
+        	{{ csrf_field() }}
+    		{{ method_field('DELETE') }}
+
+        	<div class="form-group">
+        		<input type="submit" value="Delete User" class="btn btn-danger col-sm-2">
+        	</div>
+        	
+        </form>
+        	
     </div>
 
 </div>
